@@ -5,6 +5,6 @@ export const tasksProviders = [
   {
     provide: 'TASK_REPOSITORY',
     useFactory: (dataSource: DataSource) => dataSource.getRepository(Task),
-    inject: []
+    inject: ['DB_CONNECTION']
   },
 ];
