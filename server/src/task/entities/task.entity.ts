@@ -11,6 +11,6 @@ export class Task {
     @Column({ length: 100 })
     description: string;
     
-    @Column()
+    @Column({ default: 0 })
     state: number // 0 undone 1 done
 }

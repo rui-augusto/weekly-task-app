@@ -1,35 +1,49 @@
 import { Controller, Get, Param, Post, Put, Delete, Body } from '@nestjs/common';
 import { TaskService } from "./task.service";
 import { CreateTaskDto } from "./dto/create-task.dto";
-import { UpdateTaskDto } from "./dto/update-task.dto";
 
 @Controller('task')
 export class TaskController {
     constructor(private taskService: TaskService) {}
 
+    // RETURNS ALL TASKS
     @Get()
-    findAll(): string{
-        return "This action returns all tasks";
+    async findAll(){
+        return await this.taskService.findAll();
     }
 
-    @Get(':id')
-    findOne(@Param('id') id: number){
-        return `This action returns a ${id} task`;
+    // RETURNS TASK
+    @Get(":id")
+    async findOne(@Param('id') id: number){
+        return await this.taskService.findOne(id);
     }
 
-    @Post()
-    create(@Body() body: CreateTaskDto){
-        return "This action creates a task";
+    // CREATES NEW TASK
+    @Post("create")
+    async create(@Body() createTaskDto: CreateTaskDto){
+        const task = await this.taskService.create(createTaskDto)
+        if (!task){
+            return "error: data is invalid";
+        }
+        return "task created";
     }
 
-    @Put(':id')
-    update(@Param(':id') id: number, @Body() body: any){
-        return `This actions updates ${id} task`;
+    // UPDATES TASK
+    @Put("update/:id")
+    async update(@Param('id') id: number, @Body() body: any){
+        await this.taskService.update(id, body);
+        return `task ${id} updated`;
     }
 
-    @Delete()
-    remove(@Param(':id') id: number){
-        return `This action removes ${id} task`;
+    // REMOVES TASK
+    @Delete("/remove/:id")
+    async remove(@Param('id') id: number){
+        const task = await this.taskService.findOne(id);
+        await this.taskService.delete(id);
+        if (!task) {
+            return "error: verify the id number and try again";
+        }
+        return `task ${id} removed`;
     }    
 
 }
