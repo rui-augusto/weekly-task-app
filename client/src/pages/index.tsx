@@ -1,4 +1,5 @@
 import { Task } from "../components/Task";
+import { FullContentArea } from "./index.styles";
 
 export const Index = () => {
 
@@ -9,12 +10,12 @@ export const Index = () => {
   ];
 
   return (
-    <div>
+    <FullContentArea>
       {
         tasks.map((item, key) => (
             <Task task = {item.task} description = {item.description} key = {key}/>
         ))
       }
-    </div>
+    </FullContentArea>
   );
 }
