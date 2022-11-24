@@ -1,9 +1,9 @@
 import style from 'styled-components';
 
 // importing react-icons
-import { IoIosAdd, IoIosDoneAll } from "react-icons/io";
-import { MdOutlineBookmarkAdd, MdOutlineBookmarkAdded,
-         MdOutlinePlaylistAddCheck, MdOutlinePlaylistAdd,
+//import { IoIosAdd, IoIosDoneAll } from "react-icons/io";
+import { MdOutlinePlaylistAddCheck, MdOutlinePlaylistAdd,
+//         MdOutlineBookmarkAdd, MdOutlineBookmarkAdded,
 } from 'react-icons/md'
 
 interface Props{
