@@ -1,10 +1,6 @@
-import style from 'styled-components';
-
-// importing react-icons
-//import { IoIosAdd, IoIosDoneAll } from "react-icons/io";
-import { MdOutlinePlaylistAddCheck, MdOutlinePlaylistAdd,
-//         MdOutlineBookmarkAdd, MdOutlineBookmarkAdded,
-} from 'react-icons/md'
+import { useEffect, useState } from 'react';
+import { MdOutlinePlaylistAddCheck, MdOutlinePlaylistAdd, } from 'react-icons/md'
+import { getAllTasks } from "../api/index";
 
 interface Props{
   task: string;
@@ -12,6 +8,17 @@ interface Props{
 }
 
 export const Task = (props: Props) => {
+
+  const [listOfTasks, setListOfTasks] = useState<Object>({});
+
+  useEffect(() => {
+    setListOfTasks(getAllTasks());
+  }, []);
+
+  const showMessage = () => {
+    console.log(listOfTasks);
+  }
+
   console.log(props.task + " / " + props.description);
   return(
     <div>
@@ -22,6 +29,8 @@ export const Task = (props: Props) => {
           <td style = {{fontSize: "20px"}}><MdOutlinePlaylistAddCheck /></td>
           <td style = {{fontSize: "19px"}}><MdOutlinePlaylistAdd /> </td>{/*</td>// adicionar (ou alterar?) comentário*/}        </tr>
       </table>
+
+      <button onClick = {showMessage}>SHOW MESSAGE</button>
     </div>
   );
 }
