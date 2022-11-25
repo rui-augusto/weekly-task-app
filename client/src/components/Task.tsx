@@ -12,37 +12,42 @@ interface Props{
 
 export const Task = (props: Props) => {
   
+  // CONTROLS THE VISIBILITY OF THE TASK
   const [showTask, setShowTask] = useState<boolean>(true);
 
-  // implementando funcoes [marcar como feita, excluir]
+  // CALLS AN API FUNCTION THAT CHANGES TASK STATE VALUE TO 1 (done)
   const markAsDone = async () => {
-
+    const res = await completeTask(props.id, 1);
+    if (!res) {
+      console.log("error: try again");
+    } else {
+      console.log("task state altered to 'done'");
+    }
   }
 
-  const deleteTask = async (id: number) => {
-    const res = removeTask(id);
+  // CALLS AN API FUNCTION THAT REMOVES THE TASK DATA
+  const deleteTask = async () => {
+    const res = await removeTask(props.id);
     if (!res){
       console.log("error: try again");
     } else {
       setShowTask(false);
-      console.log(`task ${id} deleted`);
+      console.log(`task ${props.id} deleted`);
     }
   }
 
   return(
+  <div>
+    { showTask &&
     <FullContentTaskArea>
-      { showTask &&
         <TaskList>
           <TaskName>{ props.task }</TaskName>
           <TaskDescription>{ props.description }</TaskDescription>
-          <TaskIcons><MdOutlinePlaylistAddCheck style = {{fontSize: "20px"}}/></TaskIcons>
-          <TaskIcons><MdOutlinePlaylistAdd onClick = {() => { deleteTask(props.id) }} style = {{fontSize: "20px"}}/></TaskIcons> 
+          <TaskIcons><MdOutlinePlaylistAddCheck onClick = {markAsDone} style = {{fontSize: "20px"}}/></TaskIcons>
+          <TaskIcons><MdOutlinePlaylistAdd onClick = {deleteTask} style = {{fontSize: "20px"}}/></TaskIcons> 
         </TaskList>
-      }
-    </FullContentTaskArea>
+        </FullContentTaskArea>
+    }
+  </div>
   );
 }
-
-
-// A IDEIA EH FAZER CADA PROPS SER UM ITEM DE UMA LISTA NÃO ORDENADA, REPRESENTANDO UMA TAREFA DIFERENTE
-// CADA TASK TERÁ UMA ÍCONES PARA VER MAIS INFORMAÇÕES ( QUE DEVERÃO SER MOSTRADAS EM CIMA DA PALAVRA OU ABRINDO UMA JANELA), ALTERAR, APAGAR

@@ -14,7 +14,7 @@ export const getAllTasks = async () => {
   }
 }
 
-export const completeTask = async (id: string, state: number) => {
+export const completeTask = async (id: number, state: number) => {
   try {
     const res = await axios({
       method: 'PATCH',
