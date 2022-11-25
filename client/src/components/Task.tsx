@@ -3,11 +3,14 @@ import { MdOutlinePlaylistAddCheck, MdOutlinePlaylistAdd, } from 'react-icons/md
 import { TaskTd, TaskTable, FullContentTaskArea } from "./Task.styles";
 
 interface Props{
+  id: number;
   task: string;
   description: string;
+  state: number;
 }
 
 export const Task = (props: Props) => {
+  console.log(props);
   return(
     <FullContentTaskArea>
       <TaskTable style = {{border: "1px solid black"}}>
