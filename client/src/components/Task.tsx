@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { MdOutlinePlaylistAddCheck, MdOutlinePlaylistAdd, } from 'react-icons/md'
 import { FullContentTaskArea, TaskDescription, TaskIcons, TaskList, TaskName } from "./Task.styles";
 import { completeTask, removeTask } from "../api/index";
@@ -11,7 +11,8 @@ interface Props{
 }
 
 export const Task = (props: Props) => {
-  console.log(props);
+  
+  const [showTask, setShowTask] = useState<boolean>(true);
 
   // implementando funcoes [marcar como feita, excluir]
   const markAsDone = async () => {
@@ -19,22 +20,25 @@ export const Task = (props: Props) => {
   }
 
   const deleteTask = async (id: number) => {
-    try {
-      await removeTask(id);
-      console.log(`task ${id} removed`);
-    } catch (err){
-      console.log(err);
+    const res = removeTask(id);
+    if (!res){
+      console.log("error: try again");
+    } else {
+      setShowTask(false);
+      console.log(`task ${id} deleted`);
     }
   }
 
   return(
     <FullContentTaskArea>
+      { showTask &&
         <TaskList>
           <TaskName>{ props.task }</TaskName>
           <TaskDescription>{ props.description }</TaskDescription>
           <TaskIcons><MdOutlinePlaylistAddCheck style = {{fontSize: "20px"}}/></TaskIcons>
           <TaskIcons><MdOutlinePlaylistAdd onClick = {() => { deleteTask(props.id) }} style = {{fontSize: "20px"}}/></TaskIcons> 
         </TaskList>
+      }
     </FullContentTaskArea>
   );
 }

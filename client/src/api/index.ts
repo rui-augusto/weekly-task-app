@@ -43,12 +43,14 @@ export const addTask = async (task: string, description: string) => {
 
 export const removeTask = async (id: number) => {
   try {
-    const res = await axios({
+    await axios({
       method: 'DELETE',
-      url: '/task/remove/:id',
-      params: { id }
+      url: 'http://localhost:3000/task/remove/' + id,
+      // params: { id }
     });
+    return true;
   } catch (err) {
     console.log(err);
+    return false
   }
 };
