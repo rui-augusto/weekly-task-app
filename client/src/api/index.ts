@@ -14,12 +14,25 @@ export const getAllTasks = async () => {
   }
 }
 
-export const completeTask = async (id: string, task: string, description: string) => {
+export const completeTask = async (id: string, state: number) => {
   try {
     const res = await axios({
       method: 'PATCH',
-      url: '/task/update/:id',
+      url: 'http://localhost:3000/task/update/:id',
       params: { id },
+      data: { state }
+    });
+    return res;
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const addTask = async (task: string, description: string) => {
+  try {
+    const res = await axios({
+      method: 'POST',
+      url: 'http://localhost:3000/task/create',
       data: { task, description }
     });
     return res;
@@ -28,20 +41,7 @@ export const completeTask = async (id: string, task: string, description: string
   }
 };
 
-export const addTask = async (content: any) => {
-  try {
-    const res = await axios({
-      method: 'POST',
-      url: '/task/create',
-      data: { content }
-    });
-    return res;
-  } catch (err) {
-    console.log(err);
-  }
-};
-
-export const removeTask = async (id: string) => {
+export const removeTask = async (id: number) => {
   try {
     const res = await axios({
       method: 'DELETE',

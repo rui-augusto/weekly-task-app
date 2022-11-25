@@ -1,6 +1,7 @@
 import React from 'react';
 import { MdOutlinePlaylistAddCheck, MdOutlinePlaylistAdd, } from 'react-icons/md'
-import { TaskTd, TaskTable, FullContentTaskArea } from "./Task.styles";
+import { FullContentTaskArea, TaskDescription, TaskIcons, TaskList, TaskName } from "./Task.styles";
+import { completeTask, removeTask } from "../api/index";
 
 interface Props{
   id: number;
@@ -11,18 +12,29 @@ interface Props{
 
 export const Task = (props: Props) => {
   console.log(props);
+
+  // implementando funcoes [marcar como feita, excluir]
+  const markAsDone = async () => {
+
+  }
+
+  const deleteTask = async (id: number) => {
+    try {
+      await removeTask(id);
+      console.log(`task ${id} removed`);
+    } catch (err){
+      console.log(err);
+    }
+  }
+
   return(
     <FullContentTaskArea>
-      <TaskTable style = {{border: "1px solid black"}}>
-        <tbody>
-          <tr>
-            <TaskTd>{ props.task }</TaskTd>
-            <TaskTd>{ props.description }</TaskTd>
-            <TaskTd><MdOutlinePlaylistAddCheck/></TaskTd>
-            <TaskTd><MdOutlinePlaylistAdd /> </TaskTd>{/*</td>// adicionar (ou alterar?) comentário*/}
-          </tr>
-        </tbody>
-      </TaskTable>
+        <TaskList>
+          <TaskName>{ props.task }</TaskName>
+          <TaskDescription>{ props.description }</TaskDescription>
+          <TaskIcons><MdOutlinePlaylistAddCheck style = {{fontSize: "20px"}}/></TaskIcons>
+          <TaskIcons><MdOutlinePlaylistAdd onClick = {() => { deleteTask(props.id) }} style = {{fontSize: "20px"}}/></TaskIcons> 
+        </TaskList>
     </FullContentTaskArea>
   );
 }
