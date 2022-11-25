@@ -1,8 +1,8 @@
 import axios from 'axios';
 
+// defining functions to get database info
+
 export const getAllTasks = async () => {
-  axios.defaults.headers.get['Content-Type'] ='application/json;charset=utf-8';
-  axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
   try {
     const res = await axios({
       method: 'GET',
