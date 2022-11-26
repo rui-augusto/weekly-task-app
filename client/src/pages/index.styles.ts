@@ -13,6 +13,9 @@ export const HeaderContentArea = styled.header`
   justify-content: center;
 `;
 
-export const NewTask = styled.div`
-
+export const TaskContentArea = styled.div`
+  width: 100%;
+  border: 3px solid #8899a6;
+  border-radius: 8px;
 `;
+

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { MdOutlinePlaylistAddCheck, MdOutlinePlaylistAdd, } from 'react-icons/md'
-import { FullContentTaskArea, TaskDescription, TaskIcons, TaskList, TaskName } from "./Task.styles";
+import { FullContentTaskArea, TaskDescription, TaskHr, TaskIcons, TaskList, TaskName } from "./Task.styles";
 import { completeTask, removeTask } from "../api/index";
 
 interface Props{
@@ -46,6 +46,7 @@ export const Task = (props: Props) => {
           <TaskIcons><MdOutlinePlaylistAddCheck onClick = {markAsDone} style = {{fontSize: "20px"}}/></TaskIcons>
           <TaskIcons><MdOutlinePlaylistAdd onClick = {deleteTask} style = {{fontSize: "20px"}}/></TaskIcons>
         </TaskList>
+        <TaskHr />
         </FullContentTaskArea>
     }
   </div>

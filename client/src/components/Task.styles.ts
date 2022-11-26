@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const FullContentTaskArea = styled.div`
   background-color: #192732;
   /* width: 100%; */
-  border-radius: 5px;
 `;
 
 export const TaskList = styled.ul`
@@ -12,16 +11,15 @@ export const TaskList = styled.ul`
   flex-direction: row;
   justify-content: flex-start;
   margin: 0;
+  padding: 1% 2%;
 `;
 
 export const TaskName = styled.div`
-  /* border: 1px solid black; */
   width: 40%;
   padding: 0;
 `;
 
 export const TaskDescription = styled.div`
-  /* border: 1px solid black; */
   width: 50%;
   padding: 0;
 `;
@@ -29,7 +27,11 @@ export const TaskDescription = styled.div`
 export const TaskIcons = styled.div`
   width: 5%;
   padding: 0;
+  &:hover {
+    color: #FFFFFF;
+  }
 `;
 
 export const TaskHr = styled.hr`
+  background-color: #8899a6; 
 `;

@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 
 
 import { Task } from "../components/Task";
-import { FullContentArea, HeaderContentArea} from "./index.styles";
+import { FullContentArea, TaskContentArea} from "./index.styles";
 import { getAllTasks, addTask } from "../api/index";
 import { Header } from '../components/Header';
 
@@ -36,10 +36,12 @@ export const Index = () => {
   return (
     <FullContentArea>
       <Header />
-      { listOfTasks.map((item, key) => (
-            <Task id = {item.id} task = {item.task} description = {item.description} state = {item.state} key = {key}/>
-        ))
-      }
+      <TaskContentArea>
+        { listOfTasks.map((item, key) => (
+          <Task id = {item.id} task = {item.task} description = {item.description} state = {item.state} key = {key}/>
+          ))
+        }
+      </TaskContentArea>
       { newTaskWindow &&
         <div>
           <form onSubmit={handleSubmit(createNewTask)}>
