@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { Task } from "../components/Task";
 import { FullContentArea, HeaderContentArea} from "./index.styles";
 import { getAllTasks, addTask } from "../api/index";
+import { Header } from '../components/Header';
 
 export const Index = () => {
 
@@ -34,10 +35,7 @@ export const Index = () => {
 
   return (
     <FullContentArea>
-      <HeaderContentArea>
-        <button onClick = {() => { setNewTaskWindow(!newTaskWindow)}}>add</button>
-        {/* Weekly Task App */}
-      </HeaderContentArea>
+      <Header />
       { listOfTasks.map((item, key) => (
             <Task id = {item.id} task = {item.task} description = {item.description} state = {item.state} key = {key}/>
         ))

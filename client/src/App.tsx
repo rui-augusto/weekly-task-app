@@ -2,7 +2,6 @@ import React from 'react';
 import "./index.css";
 import { Index } from "./pages/index";
 
-
 function App() {
   return (
     <div className = "App">

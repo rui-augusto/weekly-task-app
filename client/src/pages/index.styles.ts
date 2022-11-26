@@ -6,7 +6,7 @@ export const FullContentArea = styled.div`
   justify-content: right;
   background-color: #15202B;
   width: 40%;
-  height: 100%;
+  height: 100vh;
 `
 export const HeaderContentArea = styled.header`
   display: flex;

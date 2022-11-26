@@ -44,7 +44,7 @@ export const Task = (props: Props) => {
           <TaskName>{ props.task }</TaskName>
           <TaskDescription>{ props.description }</TaskDescription>
           <TaskIcons><MdOutlinePlaylistAddCheck onClick = {markAsDone} style = {{fontSize: "20px"}}/></TaskIcons>
-          <TaskIcons><MdOutlinePlaylistAdd onClick = {deleteTask} style = {{fontSize: "20px"}}/></TaskIcons> 
+          <TaskIcons><MdOutlinePlaylistAdd onClick = {deleteTask} style = {{fontSize: "20px"}}/></TaskIcons>
         </TaskList>
         </FullContentTaskArea>
     }
