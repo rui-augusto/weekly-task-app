@@ -38,5 +38,5 @@ export const TaskHr = styled.hr`
 `;
 
 export const TaskInput = styled.input`
-  width: 16px;
+  /* width: 16px; */
 `;
