@@ -30,8 +30,13 @@ export const TaskIcons = styled.div`
   &:hover {
     color: #FFFFFF;
   }
+  font-size: 20px;
 `;
 
 export const TaskHr = styled.hr`
   background-color: #8899a6; 
+`;
+
+export const TaskInput = styled.input`
+  width: 16px;
 `;

@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { MdOutlinePlaylistAddCheck, MdOutlinePlaylistAdd, } from 'react-icons/md'
-import { FullContentTaskArea, TaskDescription, TaskHr, TaskIcons, TaskList, TaskName } from "./Task.styles";
+import { CgTrash, CgPen } from "react-icons/cg";
+import { FullContentTaskArea, TaskDescription, TaskHr, TaskIcons, TaskList, TaskName, TaskInput } from "./Task.styles";
 import { completeTask, removeTask } from "../api/index";
+
 
 interface Props{
   id: number;
@@ -41,10 +42,11 @@ export const Task = (props: Props) => {
     { showTask &&
     <FullContentTaskArea>
         <TaskList>
+          <TaskInput onClick = {markAsDone} type = "checkbox"/>
           <TaskName>{ props.task }</TaskName>
           <TaskDescription>{ props.description }</TaskDescription>
-          <TaskIcons><MdOutlinePlaylistAddCheck onClick = {markAsDone} style = {{fontSize: "20px"}}/></TaskIcons>
-          <TaskIcons><MdOutlinePlaylistAdd onClick = {deleteTask} style = {{fontSize: "20px"}}/></TaskIcons>
+          <TaskIcons><CgPen/></TaskIcons>
+          <TaskIcons><CgTrash onClick = {deleteTask}/></TaskIcons>
         </TaskList>
         <TaskHr />
         </FullContentTaskArea>
