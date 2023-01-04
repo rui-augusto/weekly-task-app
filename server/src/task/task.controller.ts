@@ -15,7 +15,11 @@ export class TaskController {
     // RETURNS TASK
     @Get(":id")
     async findOne(@Param('id') id: number){
-        return await this.taskService.findOne(id);
+        const task = await this.taskService.findOne(id);
+        if (!task) {
+            return "error: verify the id number and try again";
+        }
+        return task;
     }
 
     // CREATES NEW TASK
