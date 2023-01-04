@@ -23,12 +23,14 @@ export const NewTaskArea = () => {
               required: true,
               maxLength: 20, 
           })}
+          placeholder="New Task"
         />
         <input
           {...register("description", {
               required: false,
               maxLength: 100, 
           })}
+          placeholder="Description"
         />
         <input type="submit" />
       </form>

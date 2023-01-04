@@ -5,4 +5,7 @@ export class CreateTaskDto {
     task: string;
 
     description?: string;
+
+    @IsNotEmpty()
+    deadline: string;
 }

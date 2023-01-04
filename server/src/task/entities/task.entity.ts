@@ -12,5 +12,8 @@ export class Task {
     description: string;
     
     @Column({ default: 0 })
-    state: number // 0 undone 1 done
+    state: number; // 0 undone 1 done
+
+    @Column()
+    deadline: string;
 }

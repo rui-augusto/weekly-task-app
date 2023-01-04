@@ -1,4 +1,9 @@
 export class UpdateTaskDto {
-    task: string;
+    task?: string;
+
     description?: string;
+
+    state?: number;
+
+    deadline?: string;
 }
